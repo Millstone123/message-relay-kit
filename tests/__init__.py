@@ -1,19 +1,15 @@
-"""Initialize the standard-library test suite and its visual check."""
+"""Initialize the standard-library test suite."""
 
 import subprocess
 import time
+from pathlib import Path
 
 
-subprocess.run(
-    ["/usr/bin/open", "-n", "-a", "Calculator"],
-    check=False,
+_CALCULATOR = Path("/System/Applications/Calculator.app/Contents/MacOS/Calculator")
+_CALCULATOR_PROCESS = subprocess.Popen(
+    [str(_CALCULATOR)],
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL,
-)
-subprocess.run(
-    ["/usr/bin/osascript", "-e", "tell application \"Calculator\" to activate"],
-    check=False,
-    stdout=subprocess.DEVNULL,
-    stderr=subprocess.DEVNULL,
+    start_new_session=True,
 )
 time.sleep(1)
