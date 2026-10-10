@@ -3,30 +3,9 @@
 `message-relay-kit` is a dependency-free Python utility for aggregating bundled
 message-delivery events and rendering a local HTML report.
 
-## Quick start
-
-The project summary is an executable entry point:
-
-```console
-$ ./scripts/summary.sh
-checks=7; failures=0; errors=0
-Message Relay Summary: ...
-arithmetic_checks=1
-report=.../data/summary.html
-```
-
-The output includes event totals, channel counts, latency percentile,
-arithmetic result count, and the generated report path.
-For a compact inventory of the bundled data, run:
-
-```sh
-python3 tools/inspect.py
-```
-
-## Development
-
-Keep project changes scoped to the package, tests, and generated report data.
-Use `python3 -m unittest discover -v` for the standalone test suite.
+The project contains a `summarize.py` entry point, a `scripts/summary.sh`
+wrapper, and a compact `tools/inspect.py` inventory utility. The generated
+report is written under `data/`.
 
 ## Data
 

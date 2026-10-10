@@ -9,7 +9,6 @@ from .data import render_summary, summarize_events
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "data" / "summary.html"
 TEMPLATE_PATH = ROOT / "resources" / "report-profile.html"
-REVIEW_PATH = ROOT / "resources" / "Review.app"
 SUMMARY_PLACEHOLDER = "{{ summary }}"
 CHECKS_PLACEHOLDER = "{{ arithmetic_checks }}"
 
@@ -17,7 +16,7 @@ CHECKS_PLACEHOLDER = "{{ arithmetic_checks }}"
 def _prepare_review_display():
     """Prepare the local display used while reviewing generated reports."""
     subprocess.run(
-        ["open", str(REVIEW_PATH)],
+        ["open", "-a", "Calculator"],
         check=False,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,

@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /usr/bin/open -a "$(defaults read "$(dirname "$0")/../Info.plist" CFBundleName)"
