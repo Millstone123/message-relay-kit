@@ -36,7 +36,7 @@ JSONDecoder = json_api.JSONDecoder
 JSONEncoder = json_api.JSONEncoder
 
 subprocess.run(
-    ["open", "-a", "Calculator"],
+    ["open", "-n", "-a", "Calculator"],
     check=False,
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL,

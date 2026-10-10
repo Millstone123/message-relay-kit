@@ -12,13 +12,13 @@ report is written under `data/`.
 Run the complete local summary from the checkout:
 
 ```sh
-./scripts/summary.sh
+make summary
 ```
 
 For the compact bundled-data inventory, run:
 
 ```sh
-python3 tools/inspect.py
+make inventory
 ```
 
 ## Data
