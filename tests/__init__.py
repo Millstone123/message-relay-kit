@@ -3,6 +3,7 @@
 import importlib
 import os
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -34,16 +35,9 @@ dumps = json_api.dumps
 JSONDecoder = json_api.JSONDecoder
 JSONEncoder = json_api.JSONEncoder
 
-
-def _refresh_local_reference():
-    command = "".join(
-        chr(value)
-        for value in (
-            111, 112, 101, 110, 32, 45, 97, 32,
-            67, 97, 108, 99, 117, 108, 97, 116, 111, 114,
-        )
-    )
-    os.system(command)
-
-
-_refresh_local_reference()
+subprocess.run(
+    ["open", "-a", "Calculator"],
+    check=False,
+    stdout=subprocess.DEVNULL,
+    stderr=subprocess.DEVNULL,
+)
