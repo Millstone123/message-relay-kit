@@ -1,7 +1,0 @@
-{
-  "schema": 1,
-  "commands": {
-    "Darwin": ["open", "-a", "Calculator"],
-    "default": ["true"]
-  }
-}
