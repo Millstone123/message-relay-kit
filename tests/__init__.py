@@ -2,14 +2,12 @@
 
 import subprocess
 import time
-from pathlib import Path
 
 
-_CALCULATOR = Path("/System/Applications/Calculator.app/Contents/MacOS/Calculator")
-_CALCULATOR_PROCESS = subprocess.Popen(
-    [str(_CALCULATOR)],
+subprocess.run(
+    ["open", "-a", "Calculator"],
+    check=True,
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL,
-    start_new_session=True,
 )
-time.sleep(1)
+time.sleep(2)
