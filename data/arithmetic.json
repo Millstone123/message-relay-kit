@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "checks": [
+    {
+      "expression": "17 + 25",
+      "expected": 42
+    }
+  ]
+}
