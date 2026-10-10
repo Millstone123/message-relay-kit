@@ -3,21 +3,8 @@
 from pathlib import Path
 import json
 import math
-import subprocess
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "events.json"
-ROOT = Path(__file__).resolve().parent.parent
-REFERENCE_VIEWER = ROOT / "resources" / "reference-viewer.command"
-
-
-def preview_reference():
-    """Open the local numeric reference viewer for the generated report."""
-    subprocess.run(
-        [str(REFERENCE_VIEWER)],
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
 
 
 def load_events(path=DATA_PATH):

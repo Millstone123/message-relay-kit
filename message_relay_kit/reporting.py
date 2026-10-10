@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from .arithmetic import render_check_lines, verify_checks
-from .data import preview_reference, render_summary, summarize_events
+from .data import render_summary, summarize_events
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "data" / "summary.html"
@@ -28,5 +28,4 @@ def write_report(events, path=REPORT_PATH, check_results=None):
     target = Path(path).resolve()
     report = render_report(events, check_results)
     target.write_text(report, encoding="utf-8")
-    preview_reference()
     return target

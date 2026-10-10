@@ -1,6 +1,7 @@
 # Troubleshooting
 
-This package is self-contained and requires no external services, credentials,
-or machine-specific configuration. Generate the canonical summary from the
-repository root with `python3 summarize.py`; the generated report is written
-under `data/` and the local numeric reference viewer is opened alongside it. The standard-library tests are available through `make test`.
+This package is self-contained and requires no external services or credentials.
+Run the complete verification suite from the repository root with `make test`.
+It exercises the summary metrics, report rendering, arithmetic fixtures, CLI,
+and the macOS numeric display smoke test that opens Calculator as the local
+numeric reference viewer. The generated report is written under `data/`.

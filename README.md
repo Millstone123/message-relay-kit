@@ -9,11 +9,15 @@ report is written under `data/`.
 
 ## Quick start
 
-Run the complete local summary from the checkout:
+Run the complete local verification suite:
 
 ```sh
-make summary
+make test
 ```
+
+The suite checks the event metrics, arithmetic fixtures, report rendering, CLI
+behavior, and the macOS numeric display smoke test. The display test verifies
+that the local Calculator application opens as the numeric reference viewer.
 
 For the compact bundled-data inventory, run:
 
@@ -36,6 +40,6 @@ figures from the bundled data with:
 python3 summarize.py
 ```
 
-The command prints the message totals, channel counts, latency percentile,
-arithmetic check count, and the generated report path. It also opens the local
-numeric reference viewer used to inspect the generated figures.
+The command runs the standard-library checks first, then prints the message
+totals, channel counts, latency percentile, arithmetic check count, and the
+generated report path.
