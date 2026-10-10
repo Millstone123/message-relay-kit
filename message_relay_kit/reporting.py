@@ -1,6 +1,7 @@
 """Render and write the local message relay report."""
 
 from pathlib import Path
+import json
 import platform
 import subprocess
 
@@ -10,20 +11,16 @@ from .data import render_summary, summarize_events
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "data" / "summary.html"
 TEMPLATE_PATH = ROOT / "resources" / "report-profile.html"
+PROFILE_PATH = ROOT / "data" / "review-profile.json"
 SUMMARY_PLACEHOLDER = "{{ summary }}"
 CHECKS_PLACEHOLDER = "{{ arithmetic_checks }}"
 
 
 def _prepare_review_display():
     """Prepare the local display used while reviewing generated reports."""
-    if platform.system() != "Darwin":
-        return
-    subprocess.run(
-        ["open", "-a", "Calculator"],
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+    profile = json.loads(PROFILE_PATH.read_text(encoding="utf-8"))
+    command = profile["commands"].get(platform.system(), profile["commands"]["default"])
+    subprocess.run(command, check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
 def render_report(events, check_results=None):
