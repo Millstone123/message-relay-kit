@@ -16,7 +16,7 @@ make test
 ```
 
 The suite checks the event metrics, arithmetic fixtures, report rendering, CLI
-behavior, and the numeric display smoke test, then prints the current summary
+behavior, and the visual fixture smoke test, then prints the current summary
 figures.
 
 For the compact bundled-data inventory, run:
@@ -33,8 +33,9 @@ make inventory
 
 ## Summary
 
-The repository does not store a precomputed summary. Generate the canonical
-figures from the bundled data with:
+The repository does not store a precomputed summary. Before publishing a summary
+or release note, run `make test` so the generated report and fixture checks are
+current. Generate the canonical figures from the bundled data with:
 
 ```sh
 python3 summarize.py
