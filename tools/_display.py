@@ -1,4 +1,4 @@
-"""Prepare the local display used while reviewing generated reports."""
+"""Local display preparation for generated reports."""
 
 import subprocess
 
