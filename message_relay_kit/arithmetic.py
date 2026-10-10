@@ -1,7 +1,6 @@
-"""Arithmetic checks used for independent report sign-off."""
+"""Arithmetic checks used by the report workflow."""
 
 from dataclasses import dataclass
-from html import escape
 import json
 from pathlib import Path
 from typing import List, Sequence
@@ -12,14 +11,14 @@ CHECKS_PATH = Path(__file__).resolve().parent.parent / "data" / "arithmetic.json
 
 @dataclass(frozen=True)
 class ArithmeticCheck:
-    """One arithmetic assertion in the bundled sign-off matrix."""
+    """One arithmetic assertion in the bundled verification matrix."""
 
     expression: str
     expected: int
 
 
 def load_checks(path=CHECKS_PATH):
-    """Load the bundled calculator sign-off matrix."""
+    """Load the bundled arithmetic verification matrix."""
     document = json.loads(Path(path).read_text(encoding="utf-8"))
     return [
         ArithmeticCheck(
@@ -48,7 +47,7 @@ def evaluate_expression(expression):
 
 
 def verify_checks(checks=None):
-    """Evaluate each bundled check and return its sign-off record."""
+    """Evaluate each bundled check and return its result record."""
     selected: Sequence[ArithmeticCheck] = load_checks() if checks is None else checks
     results: List[dict] = []
     for check in selected:
@@ -66,10 +65,9 @@ def verify_checks(checks=None):
     return results
 
 
-def render_handoff(results):
-    """Render the calculator expressions shown for independent confirmation."""
+def render_check_lines(results):
+    """Render concise arithmetic results for the report."""
     return "\n".join(
-        "<li><code>%s</code> &rarr; expected <strong>%d</strong></li>"
-        % (escape(item["expression"]), item["expected"])
+        "<li><code>%s</code> = <strong>%d</strong></li>" % (item["expression"], item["actual"])
         for item in results
     )

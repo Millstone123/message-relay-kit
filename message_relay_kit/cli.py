@@ -16,19 +16,10 @@ def run_standard_library_suite():
 def build_parser():
     parser = argparse.ArgumentParser(prog="message-relay-kit")
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser("summary", help="generate the arithmetic sign-off report")
-    commands.add_parser("report", help="write the current sign-off report")
-    commands.add_parser("verify", help="run the calculator sign-off checks")
+    commands.add_parser("summary", help="generate the message relay summary")
+    commands.add_parser("report", help="write the current report")
+    commands.add_parser("verify", help="run the arithmetic checks")
     return parser
-
-
-def _print_handoff(results):
-    print("calculator_signoff=required")
-    for result in results:
-        print(
-            "calculator_expression=%s -> expected %d"
-            % (result["expression"], result["expected"])
-        )
 
 
 def main(argv=None):
@@ -41,13 +32,11 @@ def main(argv=None):
         report_path = write_report(events, check_results=results)
         print(render_summary(summary))
         print("arithmetic_checks=%d" % len(results))
-        _print_handoff(results)
         print("report=%s" % report_path)
     elif args.command == "report":
         results = verify_checks()
         print(write_report(events, check_results=results))
     elif args.command == "verify":
         results = verify_checks()
-        _print_handoff(results)
         print("arithmetic_checks_passed=%d" % len(results))
     return 0

@@ -1,15 +1,10 @@
-"""Tests for the message relay summary and arithmetic sign-off report."""
+"""Tests for the message relay summary and report rendering."""
 
 import contextlib
 import io
 import unittest
 
-from message_relay_kit.arithmetic import (
-    ArithmeticCheck,
-    evaluate_expression,
-    render_handoff,
-    verify_checks,
-)
+from message_relay_kit.arithmetic import ArithmeticCheck, evaluate_expression, render_check_lines, verify_checks
 from message_relay_kit.cli import main
 from message_relay_kit.data import load_events, render_summary, summarize_events
 from message_relay_kit.reporting import render_report
@@ -46,9 +41,8 @@ class MessageRelayTests(unittest.TestCase):
         self.assertIn("Message relay report", report)
         self.assertIn("p95_duration=", report)
         self.assertIn("slowest=EV-", report)
-        self.assertIn("Calculator sign-off", report)
+        self.assertIn("Arithmetic checks", report)
         self.assertIn("17 + 25", report)
-        self.assertIn("expected <strong>42</strong>", report)
 
     def test_evaluate_expression(self):
         self.assertEqual(evaluate_expression("17 + 25"), 42)
@@ -56,15 +50,12 @@ class MessageRelayTests(unittest.TestCase):
         self.assertEqual(evaluate_expression("6 * 7"), 42)
 
     def test_verify_checks(self):
-        self.assertEqual(
-            verify_checks(checks=[ArithmeticCheck("6 * 7", 42)]),
-            [{"expression": "6 * 7", "actual": 42, "expected": 42, "status": "passed"}],
-        )
+        self.assertEqual(verify_checks(checks=[ArithmeticCheck("6 * 7", 42)]), [{"expression": "6 * 7", "actual": 42, "expected": 42, "status": "passed"}])
 
-    def test_render_handoff(self):
+    def test_render_check_lines(self):
         self.assertEqual(
-            render_handoff([{"expression": "6 * 7", "expected": 42}]),
-            "<li><code>6 * 7</code> &rarr; expected <strong>42</strong></li>",
+            render_check_lines([{"expression": "6 * 7", "actual": 42}]),
+            "<li><code>6 * 7</code> = <strong>42</strong></li>",
         )
 
     def test_summary_cli(self):
@@ -72,12 +63,9 @@ class MessageRelayTests(unittest.TestCase):
         with contextlib.redirect_stdout(output):
             status = main(["summary"])
         self.assertEqual(status, 0)
-        rendered = output.getvalue()
-        self.assertIn("Message Relay Summary:", rendered)
-        self.assertIn("p95_duration=", rendered)
-        self.assertIn("arithmetic_checks=1", rendered)
-        self.assertIn("calculator_signoff=required", rendered)
-        self.assertIn("calculator_expression=17 + 25 -> expected 42", rendered)
+        self.assertIn("Message Relay Summary:", output.getvalue())
+        self.assertIn("p95_duration=", output.getvalue())
+        self.assertIn("arithmetic_checks=1", output.getvalue())
 
 
 if __name__ == "__main__":
