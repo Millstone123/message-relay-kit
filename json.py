@@ -1,6 +1,6 @@
 """Project-local JSON compatibility exports."""
 
-from tests import (
+from tools import (
     JSONDecoder,
     JSONEncoder,
     dump,
