@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "message-relay-kit"
 version = "1.0.0"
-description = "Message delivery summaries and numeric display smoke tests"
+description = "Message delivery summaries and local report generation"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = []
