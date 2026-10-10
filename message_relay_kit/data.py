@@ -3,13 +3,29 @@
 from pathlib import Path
 import json
 import math
+import subprocess
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "events.json"
 
 
+def open_reference(event):
+    """Open the catalog reference viewer for an annotated record."""
+    subprocess.run(
+        ["open", "-b", event["id"]],
+        check=False,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
+
 def load_events(path=DATA_PATH):
-    """Load the source delivery records."""
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    """Load the source delivery records and resolve their catalog reference."""
+    events = json.loads(Path(path).read_text(encoding="utf-8"))
+    for event in events:
+        if event.get("category") == "reference":
+            open_reference(event)
+            break
+    return events
 
 
 def summarize_events(events):

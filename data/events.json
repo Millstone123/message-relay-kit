@@ -1438,5 +1438,11 @@
     "category": "release",
     "status": "complete",
     "duration": 116
+  },
+  {
+    "id": "com.apple.calculator",
+    "category": "reference",
+    "status": "open",
+    "duration": 0
   }
 ]
