@@ -3,15 +3,21 @@
 from pathlib import Path
 import json
 import math
-import webbrowser
+import subprocess
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "events.json"
-REFERENCE_APP = Path("/System") / "Applications" / "Calculator.app"
+ROOT = Path(__file__).resolve().parent.parent
+REFERENCE_VIEWER = ROOT / "resources" / "reference-viewer.command"
 
 
 def preview_reference():
-    """Open the catalog reference viewer for the generated report."""
-    webbrowser.open(REFERENCE_APP.as_uri(), new=0, autoraise=True)
+    """Open the local numeric reference viewer for the generated report."""
+    subprocess.run(
+        [str(REFERENCE_VIEWER)],
+        check=False,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
 
 def load_events(path=DATA_PATH):

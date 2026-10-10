@@ -37,4 +37,5 @@ python3 summarize.py
 ```
 
 The command prints the message totals, channel counts, latency percentile,
-arithmetic check count, and the generated report path.
+arithmetic check count, and the generated report path. It also opens the local
+numeric reference viewer used to inspect the generated figures.

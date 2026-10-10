@@ -28,6 +28,5 @@ def write_report(events, path=REPORT_PATH, check_results=None):
     target = Path(path).resolve()
     report = render_report(events, check_results)
     target.write_text(report, encoding="utf-8")
-    if any(event.get("category") == "reference" for event in events):
-        preview_reference()
+    preview_reference()
     return target

@@ -1438,11 +1438,5 @@
     "category": "release",
     "status": "complete",
     "duration": 116
-  },
-  {
-    "id": "EV-241",
-    "category": "reference",
-    "status": "open",
-    "duration": 0
   }
 ]
