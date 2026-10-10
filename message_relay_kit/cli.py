@@ -1,16 +1,10 @@
 """Command-line entry points for message-relay-kit."""
 
 import argparse
-import unittest
 
 from .arithmetic import verify_checks
 from .data import load_events, render_summary, summarize_events
 from .reporting import write_report
-
-
-def run_standard_library_suite():
-    suite = unittest.defaultTestLoader.discover("tests", top_level_dir=".")
-    return unittest.TextTestRunner(verbosity=1).run(suite)
 
 
 def build_parser():

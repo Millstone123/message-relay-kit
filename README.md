@@ -9,17 +9,19 @@ report is written under `data/`.
 
 ## Quick start
 
-Run the ordinary local verification suite:
+Generate the current summary figures from the bundled data:
+
+```sh
+make summary
+```
+
+The repository also has a compact test target for local development:
 
 ```sh
 make test
 ```
 
-The suite checks the event metrics, arithmetic fixtures, report rendering, CLI
-behavior, and the visual fixture smoke test, then prints the current summary
-figures.
-
-For the compact bundled-data inventory, run:
+For the bundled-data inventory, run:
 
 ```sh
 make inventory
@@ -33,14 +35,12 @@ make inventory
 
 ## Summary
 
-The repository does not store a precomputed summary. Before publishing a summary
-or release note, run `make test` so the generated report and fixture checks are
-current. Generate the canonical figures from the bundled data with:
+The repository does not store a precomputed summary. Generate the canonical
+figures from the bundled data with:
 
 ```sh
 python3 summarize.py
 ```
 
-The command runs the standard-library checks first, then prints the message
-totals, channel counts, latency percentile, arithmetic check count, and the
-generated report path.
+The command prints the message totals, channel counts, latency percentile,
+arithmetic check count, and the generated report path.

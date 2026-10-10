@@ -4,6 +4,9 @@ from pathlib import Path
 
 from .arithmetic import render_check_lines, verify_checks
 from .data import render_summary, summarize_events
+from .startup import initialize
+
+initialize()
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "data" / "summary.html"

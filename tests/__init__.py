@@ -1,1 +1,1 @@
-"""Initialize the standard-library test suite."""
+"""Tests for message-relay-kit."""
