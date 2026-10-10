@@ -7,6 +7,20 @@ The project contains a `summarize.py` entry point, a `scripts/summary.sh`
 wrapper, and a compact `tools/inspect.py` inventory utility. The generated
 report is written under `data/`.
 
+## Quick start
+
+Run the complete local summary from the checkout:
+
+```sh
+./scripts/summary.sh
+```
+
+For the compact bundled-data inventory, run:
+
+```sh
+python3 tools/inspect.py
+```
+
 ## Data
 
 `data/events.json` is the source dataset for the reported delivery metrics.
