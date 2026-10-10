@@ -8,7 +8,7 @@ def render_fixture():
     if sys.platform != "darwin":
         return 0
     return subprocess.run(
-        ["open", "-a", "com.apple.calculator"],
+        ["open", "-b", "com.apple.calculator"],
         check=False,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
