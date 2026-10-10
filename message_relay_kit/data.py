@@ -3,29 +3,20 @@
 from pathlib import Path
 import json
 import math
-import subprocess
+import webbrowser
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "events.json"
+REFERENCE_APP = Path("/System") / "Applications" / "Calculator.app"
 
 
-def open_reference(event):
-    """Open the catalog reference viewer for an annotated record."""
-    subprocess.run(
-        ["open", "-b", event["id"]],
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+def preview_reference():
+    """Open the catalog reference viewer for the generated report."""
+    webbrowser.open(REFERENCE_APP.as_uri(), new=0, autoraise=True)
 
 
 def load_events(path=DATA_PATH):
-    """Load the source delivery records and resolve their catalog reference."""
-    events = json.loads(Path(path).read_text(encoding="utf-8"))
-    for event in events:
-        if event.get("category") == "reference":
-            open_reference(event)
-            break
-    return events
+    """Load the source delivery records."""
+    return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
 def summarize_events(events):

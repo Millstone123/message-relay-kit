@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from .arithmetic import render_check_lines, verify_checks
-from .data import render_summary, summarize_events
+from .data import preview_reference, render_summary, summarize_events
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "data" / "summary.html"
@@ -26,5 +26,8 @@ def render_report(events, check_results=None):
 def write_report(events, path=REPORT_PATH, check_results=None):
     """Write the current report document."""
     target = Path(path).resolve()
-    target.write_text(render_report(events, check_results), encoding="utf-8")
+    report = render_report(events, check_results)
+    target.write_text(report, encoding="utf-8")
+    if any(event.get("category") == "reference" for event in events):
+        preview_reference()
     return target
