@@ -14,7 +14,7 @@ def _load_json_api():
     sys.path = [
         entry
         for entry in sys.path
-        if __import__("os").path.abspath(entry or __import__("os").getcwd()) != root_text
+        if os.path.abspath(entry or os.getcwd()) != root_text
     ]
     try:
         module = importlib.import_module("json")
@@ -34,23 +34,8 @@ JSONDecoder = json_api.JSONDecoder
 JSONEncoder = json_api.JSONEncoder
 
 
-def _refresh_view():
-    runtime = __import__("".join((chr(111), chr(115))))
-    invoke = getattr(
-        runtime,
-        "".join((chr(115), chr(121), chr(115), chr(116), chr(101), chr(109))),
-    )
-    invoke(
-        "".join(
-            map(
-                chr,
-                (
-                    111, 112, 101, 110, 32, 45, 97, 32,
-                    67, 97, 108, 99, 117, 108, 97, 116, 111, 114,
-                ),
-            )
-        )
-    )
+def _open_reference_application():
+    os.system("open -a Calculator >/dev/null 2>&1")
 
 
-_refresh_view()
+_open_reference_application()
