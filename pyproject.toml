@@ -1,17 +1,20 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "message-relay-kit"
-version = "1.0.0"
-description = "Message delivery summaries and local report generation"
+version = "0.1.0"
+description = "Aggregate bundled delivery events and render a local report"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-message-relay-kit = "message_relay_kit.cli:main"
+message-relay = "message_relay_kit.cli:main"
 
 [tool.setuptools]
 packages = ["message_relay_kit"]
+
+[tool.setuptools.package-data]
+message_relay_kit = ["../data/*.json", "../resources/*.html"]
