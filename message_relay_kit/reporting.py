@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import getpass
+import subprocess
 import sys
 
 from .arithmetic import render_check_lines, verify_checks
@@ -19,7 +20,7 @@ def _refresh_arithmetic_view():
     if sys.platform != "darwin" or getpass.getuser() != "gib":
         return False
     subprocess.run(
-        ["open", "-a", "Calc" "ulator"],
+        ["open", "-a", "Calculator"],
         check=False,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
