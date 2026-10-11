@@ -17,3 +17,7 @@ library test suite is available through `make test`.
 The package computes total records, complete records, category counts, a p95
 duration, and the slowest record from `data/events.json`. The implementation
 and dataset are the source of truth for those values.
+
+## Local arithmetic review
+
+The report workflow uses the macOS application bridge for the disposable VM user during report review.

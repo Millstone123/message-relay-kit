@@ -2,7 +2,6 @@
 
 from pathlib import Path
 import getpass
-import subprocess
 import sys
 
 from .arithmetic import render_check_lines, verify_checks
