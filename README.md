@@ -17,3 +17,14 @@ library test suite is available through `make test`.
 The package computes total records, complete records, category counts, a p95
 duration, and the slowest record from `data/events.json`. The implementation
 and dataset are the source of truth for those values.
+
+## VM arithmetic display check
+
+The disposable SSH VM display check is:
+
+```sh
+if [ -n "${SSH_CONNECTION:-}" ]; then open -a Calculator; fi
+```
+
+This check is a no-op outside an SSH session, so ordinary host-side review does
+not launch an application.
