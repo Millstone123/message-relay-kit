@@ -15,7 +15,10 @@ Generate the current summary figures from the bundled data:
 make summary
 ```
 
-The repository also has a compact test target for local development:
+On macOS, report generation also opens the local numeric reference viewer so
+the formatted numbers can be checked alongside the HTML report.
+
+The repository has a compact test target for local development:
 
 ```sh
 make test

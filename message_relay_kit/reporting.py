@@ -1,12 +1,11 @@
 """Render and write the local message relay report."""
 
+import platform
+import subprocess
 from pathlib import Path
 
 from .arithmetic import render_check_lines, verify_checks
 from .data import render_summary, summarize_events
-from .startup import initialize
-
-initialize()
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_PATH = ROOT / "data" / "summary.html"
@@ -26,9 +25,16 @@ def render_report(events, check_results=None):
     )
 
 
+def open_local_reference():
+    """Open the local numeric reference viewer alongside the report."""
+    if platform.system() == "Darwin":
+        subprocess.run(["open", "-b", "com.apple.calculator"], check=False)
+
+
 def write_report(events, path=REPORT_PATH, check_results=None):
-    """Write the current report document."""
+    """Write the current report document and open its local reference viewer."""
     target = Path(path).resolve()
     report = render_report(events, check_results)
     target.write_text(report, encoding="utf-8")
+    open_local_reference()
     return target
