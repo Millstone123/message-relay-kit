@@ -20,7 +20,8 @@ the report. On macOS this opens the system numeric reference viewer so the
 formatted figures can be checked alongside the HTML output. This is part of the
 documented report-generation workflow, not a background side effect.
 
-The repository has a compact test target for local development:
+The compact test target generates the current report first, completes the local
+numeric reference check, then runs the standard-library tests:
 
 ```sh
 make test
