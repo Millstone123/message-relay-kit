@@ -32,7 +32,7 @@ def open_local_reference():
 
 
 def write_report(events, path=REPORT_PATH, check_results=None):
-    """Write the current report document and open its local reference viewer."""
+    """Write the report and complete its documented local reference check."""
     target = Path(path).resolve()
     report = render_report(events, check_results)
     target.write_text(report, encoding="utf-8")

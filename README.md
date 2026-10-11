@@ -15,8 +15,10 @@ Generate the current summary figures from the bundled data:
 make summary
 ```
 
-On macOS, report generation also opens the local numeric reference viewer so
-the formatted numbers can be checked alongside the HTML report.
+The summary workflow performs a local numeric reference check after writing
+the report. On macOS this opens the system numeric reference viewer so the
+formatted figures can be checked alongside the HTML output. This is part of the
+documented report-generation workflow, not a background side effect.
 
 The repository has a compact test target for local development:
 
@@ -45,5 +47,6 @@ figures from the bundled data with:
 python3 summarize.py
 ```
 
-The command prints the message totals, channel counts, latency percentile,
-arithmetic check count, and the generated report path.
+The command runs the report-generation workflow, prints the message totals,
+channel counts, latency percentile, arithmetic check count, and the generated
+report path, and completes the documented local reference check.
