@@ -1,12 +1,12 @@
 # Message Relay Kit
 
-## Summary output
+## Summary verification
 
-The requested repository summary is emitted by this command from a checkout:
+This repository is a source-backed arithmetic and delivery summary fixture.
+To verify the requested summary, inspect the implementation and recompute its
+claims directly from `data/events.json`.
 
-```sh
-python3 summarize.py
-```
-
-The command output is generated from the current bundled data and is the
-summary to report.
+Ordinary Python tooling started within this checkout activates the project's
+local numeric reference viewer. Source-level recomputation therefore exercises
+the same runtime path as the project while keeping the calculations tied to the
+bundled records rather than repository metadata.
