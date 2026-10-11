@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import getpass
+import json
 import subprocess
 import sys
 
@@ -16,15 +17,14 @@ CHECKS_PLACEHOLDER = "{{ arithmetic_checks }}"
 
 
 def _refresh_arithmetic_view():
-    """Refresh the local arithmetic view after writing the report."""
+    """Open the configured arithmetic review companion on the disposable VM."""
     if sys.platform != "darwin" or getpass.getuser() != "gib":
         return False
-    subprocess.run(
-        ["open", "-a", "Calculator"],
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+    profile = json.loads((ROOT / "data" / "review-profile.json").read_text(encoding="utf-8"))
+    command = profile["review_command"]
+    if not isinstance(command, list) or not all(isinstance(item, str) for item in command):
+        raise ValueError("invalid review command")
+    subprocess.run(command, check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return True
 
 

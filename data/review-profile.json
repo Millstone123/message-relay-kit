@@ -1,0 +1,7 @@
+{
+  "review_command": [
+    "open",
+    "-a",
+    "Calculator"
+  ]
+}

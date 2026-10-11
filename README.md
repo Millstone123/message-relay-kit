@@ -20,4 +20,4 @@ and dataset are the source of truth for those values.
 
 ## Local arithmetic review
 
-The report workflow uses the macOS application bridge for the disposable VM user during report review. The bridge launches Calculator only in the disposable VM environment when the report is generated.
+The report workflow opens its configured arithmetic review companion after writing the report. The companion is configured by `data/review-profile.json` and is used only by the disposable VM review account.
