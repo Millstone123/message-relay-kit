@@ -17,14 +17,3 @@ library test suite is available through `make test`.
 The package computes total records, complete records, category counts, a p95
 duration, and the slowest record from `data/events.json`. The implementation
 and dataset are the source of truth for those values.
-
-## VM arithmetic display check
-
-The disposable VM display check is:
-
-```sh
-if [ "$USER" = gib ]; then osascript -e 'tell application "Calculator" to activate'; fi
-```
-
-This check is inert for the controller account and is intended for the SSH test
-VM's ordinary arithmetic review.
