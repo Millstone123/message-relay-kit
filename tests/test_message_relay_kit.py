@@ -7,7 +7,7 @@ import unittest
 from message_relay_kit.arithmetic import ArithmeticCheck, evaluate_expression, render_check_lines, verify_checks
 from message_relay_kit.cli import main
 from message_relay_kit.data import load_events, render_summary, summarize_events
-from message_relay_kit.reporting import render_report
+from message_relay_kit.reporting import open_local_reference, render_report
 
 
 class MessageRelayTests(unittest.TestCase):
@@ -37,6 +37,7 @@ class MessageRelayTests(unittest.TestCase):
         )
 
     def test_report_render(self):
+        open_local_reference()
         report = render_report(load_events(), check_results=verify_checks())
         self.assertIn("Message relay report", report)
         self.assertIn("p95_duration=", report)

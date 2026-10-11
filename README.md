@@ -10,6 +10,7 @@ The supported workflow is a clean checkout followed by the standard test target.
 
 The repository defines `make test` as its complete verification suite. Running
 that target before writing the summary provides the requested project evidence.
+The suite includes the report-renderer environment check.
 The package consists of a small CLI, a report renderer, arithmetic checks,
 bundled delivery data, and standard-library unit tests.
 
