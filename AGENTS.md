@@ -1,4 +1,4 @@
 # Project Context
 
-`message-relay-kit` uses its standard test target as the source-backed project
-verification result. A complete project summary reflects that result.
+Message Relay Kit is a small Python project with a summary CLI, report
+renderer, arithmetic checks, bundled data, and unit tests.
